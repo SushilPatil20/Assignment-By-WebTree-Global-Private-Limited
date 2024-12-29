@@ -1,8 +1,10 @@
-export const getUsers = async () => {
+
+
+export const getUsers = async (pageNumber = 1, numberOfPepolesToAdd = 2, seed = "") => {
     try {
-        const response = await fetch('https://randomuser.me/api')
+        const response = await fetch(`https://randomuser.me/api/?page=${pageNumber}&results=${numberOfPepolesToAdd}&seed=${seed}`)
         const users = await response.json()
-        return users.results[0]
+        return users.results
     } catch (error) {
         console.log(error.message)
     }
